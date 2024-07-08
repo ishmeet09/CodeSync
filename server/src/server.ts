@@ -14,6 +14,17 @@ const app = express()
 app.use(express.json())
 
 app.use(cors())
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+const corsOptions = {
+  origin: 'https://your-frontend-domain.com', // Update this to your frontend's URL
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
 
 app.use(express.static(path.join(__dirname, "public"))) // Serve static files
 

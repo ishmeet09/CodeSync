@@ -6,7 +6,7 @@ import { SocketEvent, SocketId } from "./types/socket"
 import { USER_CONNECTION_STATUS, User } from "./types/user"
 import { Server } from "socket.io"
 import path from "path"
-
+import job from './cron'; // Ensure the import path is correct
 dotenv.config()
 
 const app = express()
@@ -19,7 +19,7 @@ app.use(cors())
 
 
 app.use(express.static(path.join(__dirname, "public"))) // Serve static files
-
+job.start();
 const server = http.createServer(app)
 const io = new Server(server, {
 	cors: {
